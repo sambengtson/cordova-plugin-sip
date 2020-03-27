@@ -1,24 +1,20 @@
 import { Injectable } from '@angular/core';
-import { Plugin, IonicNativePlugin, Cordova } from '@ionic-native/core';
-
-@Plugin({
-    pluginName: 'Linphone', // should match the name of the wrapper class
-    plugin: 'cordova-plugin-sip', // NPM package name
-    pluginRef: 'cordova.plugins.sip', // name of the object exposed by the plugin
-    //repo: 'https://github.com/hoerresb/WifiWizard', // plugin repository URL
-    platforms: ['Android'] // supported platforms
-})
+import { Plugin, IonicNativePlugin, cordova } from '@ionic-native/core';
 
 @Injectable()
 export class Linphone extends IonicNativePlugin {
+    static pluginName = 'Linphone'; // should match the name of the wrapper class
+    static plugin = 'cordova-plugin-sip'; // NPM package name
+    static pluginRef = 'cordova.plugins.sip'; // name of the object exposed by the plugin
+    static platforms = ['Android'];
 
-    @Cordova()
-    login(username: string, password: string, domain: string): Promise<any> { return; }
+    login(username: string, password: string, domain: string): Promise<any> {
+        return cordova(this, 'login', {}, [username, password, domain]);
+    }
 
-    @Cordova()
-    call(address: string, displayName: string): Promise<any> { return; }
+    call(address: string, displayName: string): Promise<any> { return cordova(this, 'call', {}, [address, displayName]); }
 
-    @Cordova()
-    hangup(): Promise<any> { return; }
+    hangup(): Promise<any> { return cordova(this, 'hangup', {}, []); }
 
+    listenCall(): Promise<any> { return cordova(this, 'listenCall', {}, []); }
 }

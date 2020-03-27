@@ -1,5 +1,6 @@
 # cordova-plugin-sip
-<h2>SIP plugin for Cordova & Phonegap Apps (IOS and Android)</h2>
+<h2>Fork of SIP plugin for Cordova & Phonegap Apps (IOS and Android)</h2>
+<h4>With my fork - Added Typescript Wrapper functionality</h4>
 
 <h3>IOS</h3>
 
